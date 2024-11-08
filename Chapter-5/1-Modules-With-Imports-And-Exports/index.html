@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 5 - Modules with Imports and Exports</title>
+</head>
+<body>
+    <h1>Chapter 5 - Modules with Imports and Exports</h1>
+    <hr/>
+    <p>Open the console to see the output.</p>
+    <script type="module" src="bakery.mjs"></script>
+    <script nomodule src="fallback.js"></script>
+    <!-- ---------------------------------------------------------- -->
+    <!-- The <script nomodule> tag is used as a fallback for browsers that don't support the type="module" attribute. This is because older browsers might not understand the ES modules syntax used in bakery.mjs. -->
+    <!-- This attribute is a special feature that tells the browser to only execute the script if it doesn't support ES modules. This means that if the browser doesn't understand type="module", it will fall back to loading and executing the code in fallback.js. -->
+    <!-- ---------------------------------------------------------- -->
+</body>
+</html>

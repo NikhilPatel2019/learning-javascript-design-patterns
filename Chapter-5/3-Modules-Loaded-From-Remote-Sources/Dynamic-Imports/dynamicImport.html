@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Imports</title>
+</head>
+<body>
+    <h1>Dynamic Imports</h1>
+    <hr/>
+
+    <form type="submit" id="cake-form">
+        <button type="submit">Create a new cake</button>
+    </form>
+
+    <p id="message"></p>
+    
+    <script type="module">
+        // Dynamic Imports - Importing a module on interaction
+        document.addEventListener("DOMContentLoaded", () => {
+            const form = document.getElementById("cake-form");
+            const message = document.getElementById("message");
+
+            form.addEventListener("submit", (event) => {
+                event.preventDefault();
+                import("../../1-Modules-With-Imports-And-Exports/cakeFactory.mjs")
+                    .then((module) => {
+                        module.cakeFactory.makeCupCake();
+                        module.cakeFactory.makeMuffin();
+
+                        message.textContent = "Please check the browser console.";
+                    });
+            });
+        });
+    </script>
+</body>
+</html>

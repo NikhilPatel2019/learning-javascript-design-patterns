@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Import On Visibility</title>
+
+    <style>
+        .spacer {
+          height: 100vh;
+          background-color: #b8aaaa;
+        }
+    </style>
+</head>
+<body>
+    <h1>Import On Visibility - Lodash-es Intersection Observer Example</h1>
+    <hr/>
+    <p>Unsorted array: 5,4,3,2,1</p>
+
+    <div class="spacer"></div>
+    <h2 id="target">Scroll down to sort</h2>
+    <div class="spacer"></div>
+
+
+    <p id="message"></p>
+
+    <script type="module">
+        const message = document.getElementById("message");
+        const target = document.getElementById("target");
+        const unsortedArray = [5, 4, 3, 2, 1];
+
+        const observer = new IntersectionObserver(async (entries, observer) => {
+        for (const entry of entries) {
+            if (entry.isIntersecting) {
+            try {
+                const sortBy = await import('https://cdn.jsdelivr.net/npm/lodash-es@4.17.21/sortBy.js');
+                const sorted = sortBy.default(unsortedArray);
+
+                message.textContent = `Sorted array: ${sorted}`;
+            } catch (err) {
+                console.log(err);
+            }
+            observer.disconnect(); // Stop observing after importing and executing the function
+            }
+        }
+        }, {
+        threshold: 0.5 // Execute when at least 50% of the target element is visible
+        });
+
+        observer.observe(target);
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./cake.js" type="module"></script>
+    <script src="./cookie.js" type="module"></script>
+    <script src="./birthdayCake.js" type="module"></script>
+</head>
+<body>
+    <script type="module">
+        import Cake from './cake.js';
+        import BirthdayCake from './birthdayCake.js';
+        import { Cookie, FavouriteCookie } from './cookie.js';
+
+        // Cake Class
+        const myCake = new Cake("Chocolate", ["chocolate chips"], 5, "large");
+        console.log(myCake); 
+
+        myCake.addTopping("cherries");
+        console.log(myCake.allToppings);
+
+        console.log(myCake.qualifiesForDiscount);
+
+        myCake.size = "large";
+        console.log(myCake.cakeSize); 
+
+        // BirthdayCake Class
+        const birthdayCake = new BirthdayCake("Chocolate", ["chocolate chips"], 5, "large");
+        birthdayCake.surprise();
+
+        // Cookie Class
+        const myCookie = new Cookie("Chocolate Chip");
+        myCookie.showFlavour(); 
+
+        // FavouriteCookie Class
+        const favouriteCookie = new FavouriteCookie("Double Chocolate Chip");
+        favouriteCookie.showFlavour();
+
+        // Accessing static properties
+        console.log(FavouriteCookie.cookieName);
+        console.log(FavouriteCookie.secretMessageText);
+    </script>
+</body>
+</html>

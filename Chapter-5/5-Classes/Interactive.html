@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="./cake.js" type="module"></script>
+    <script src="./cookie.js" type="module"></script>
+    <script src="./birthdayCake.js" type="module"></script>
+  </head>
+  <body>
+    <h1>Cake Shop</h1>
+    <button id="createCake">Create Cake</button>
+    <button id="addTopping">Add Topping</button>
+    <button id="showToppings">Show Toppings</button>
+    <button id="checkDiscount">Check Discount</button>
+    <button id="changeSize">Change Size</button>
+    <p id="cakeInfo"></p>
+
+    <h1>Cookie Shop</h1>
+    <button id="createCookie">Create Cookie</button>
+    <button id="showCookieFlavour">Show Cookie Flavour</button>
+    <p id="cookieInfo"></p>
+
+    <h1>Birthday Cake Shop</h1>
+    <button id="createBirthdayCake">Create Birthday Cake</button>
+    <button id="surprise">Surprise!</button>
+    <p id="birthdayCakeInfo"></p>
+
+    <script type="module">
+      import Cake from "./cake.js";
+      import BirthdayCake from "./birthdayCake.js";
+      import { Cookie, FavouriteCookie } from "./cookie.js";
+
+      const cake = document.getElementById("createCake");
+
+      let myCake;
+
+      cake.addEventListener("click", () => {
+        myCake = new Cake(
+          "Chocolate Cake",
+          ["chocolate frosting", "sprinkles"],
+          10,
+          "medium"
+        );
+        document.getElementById("cakeInfo").textContent = `Cake created: ${
+          myCake.name
+        }, toppings: ${myCake.toppings.join(", ")}`;
+      });
+
+      document.getElementById("addTopping").addEventListener("click", () => {
+        if (myCake) {
+          myCake.addTopping("cherries");
+          document.getElementById(
+            "cakeInfo"
+          ).textContent = `Topping added: ${myCake.allToppings.join(", ")}`;
+        } else {
+          alert("Please create a cake first.");
+        }
+      });
+
+      document.getElementById("showToppings").addEventListener("click", () => {
+        if (myCake) {
+          document.getElementById(
+            "cakeInfo"
+          ).textContent = `Toppings: ${myCake.allToppings.join(", ")}`;
+        } else {
+          alert("Please create a cake first.");
+        }
+      });
+
+      document.getElementById("checkDiscount").addEventListener("click", () => {
+        if (myCake) {
+          document.getElementById(
+            "cakeInfo"
+          ).textContent = `Qualifies for discount: ${myCake.qualifiesForDiscount}`;
+        } else {
+          alert("Please create a cake first.");
+        }
+      });
+
+      document.getElementById("changeSize").addEventListener("click", () => {
+        if (myCake) {
+          myCake.size = "large";
+          document.getElementById(
+            "cakeInfo"
+          ).textContent = `Cake size changed to: ${myCake.cakeSize}`;
+        } else {
+          alert("Please create a cake first.");
+        }
+      });
+
+      // BirthdayCake Class
+      let birthdayCake;
+
+      document
+        .getElementById("createBirthdayCake")
+        .addEventListener("click", () => {
+          birthdayCake = new BirthdayCake(
+            "Vanilla Cake",
+            ["vanilla frosting", "candles"],
+            15,
+            "large"
+          );
+          document.getElementById(
+            "birthdayCakeInfo"
+          ).textContent = `Birthday cake created: ${
+            birthdayCake.name
+          }, toppings: ${birthdayCake.toppings.join(", ")}`;
+        });
+
+      document.getElementById("surprise").addEventListener("click", () => {
+        if (birthdayCake) {
+          birthdayCake.surprise();
+        } else {
+          alert("Please create a birthday cake first.");
+        }
+      });
+
+      // Cookie Class
+      let myCookie;
+
+      document.getElementById("createCookie").addEventListener("click", () => {
+        myCookie = new Cookie("Chocolate Chip");
+        document.getElementById(
+          "cookieInfo"
+        ).textContent = `Cookie created: ${myCookie.flavour}`;
+      });
+
+      document
+        .getElementById("showCookieFlavour")
+        .addEventListener("click", () => {
+          if (myCookie) {
+            myCookie.showFlavour();
+          } else {
+            alert("Please create a cookie first.");
+          }
+        });
+    </script>
+  </body>
+</html>

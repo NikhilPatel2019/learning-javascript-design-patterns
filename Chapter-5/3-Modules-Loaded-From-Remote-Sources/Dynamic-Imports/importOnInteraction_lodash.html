@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Import On Interaction with lodash</title>
+</head>
+<body>
+    <h1>Import On Interaction with lodash</h1>
+    <hr/>
+    <button id="sort-btn">Sort</button>
+    <p>Unsorted array: 5,4,3,2,1</p>
+    <p id="message"></p>
+
+    <script type="module">
+        const sortBtn = document.getElementById("sort-btn");
+        const message = document.getElementById("message");
+        const unsortedArray = [5, 4, 3, 2, 1];
+
+        sortBtn.addEventListener("click", async(e) => {
+            e.preventDefault();
+
+            // import("https://cdn.jsdelivr.net/npm/lodash-es@4.17.21/sortBy.js")
+            //     .then((module) => {
+            //         const sorted = module.default(unsortedArray);
+
+            //         message.textContent = `Sorted array: ${sorted}`;
+            //     });
+
+            // OR Using async/await
+            const sortBy = await import('https://cdn.jsdelivr.net/npm/lodash-es@4.17.21/sortBy.js');
+            const sorted = sortBy.default(unsortedArray);
+            message.textContent = `Sorted array: ${sorted}`;
+        });
+    </script>
+</body>
+</html>
