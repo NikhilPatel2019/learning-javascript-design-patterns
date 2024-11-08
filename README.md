@@ -23,7 +23,3 @@ In this chapter, we explore the use of classes in JavaScript, showcasing how to 
 5. **[Classes with Constructors, Getters, and Setters](Chapter-5/5-Classes/cake.js):** Implementing classes with constructors and utilizing getters and setters for encapsulation.
 
 This chapter emphasizes the importance of modular design and the benefits of using classes to encapsulate functionality in JavaScript applications.
-
-## License
-
-This repository is licensed under the MIT License.
