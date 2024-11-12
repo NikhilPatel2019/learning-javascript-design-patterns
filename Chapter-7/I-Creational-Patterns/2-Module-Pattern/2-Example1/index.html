@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module Pattern Example 1</title>
+    <script type="module" src="testModule.mjs"></script>
+
+</head>
+<body>
+    <h1>Module Pattern Example 1</h1>
+    <p>Open the console to see the output.</p>
+
+    <script type="module">
+        import testModule from "./testModule.mjs";
+
+        testModule.incrementCounter();
+        testModule.resetCounter();
+    </script>
+</body>
+</html>

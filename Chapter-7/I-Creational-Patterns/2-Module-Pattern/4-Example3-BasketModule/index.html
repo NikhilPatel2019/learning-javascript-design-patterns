@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module Pattern Example 3</title>
+    <script type="module" src="basketModule.js"></script>
+</head>
+<body>
+    <h1>Module Pattern Example 3</h1>
+    <p>Open the console to see the output.</p>
+
+    <script type="module">
+        import basketModule from "./basketModule.js";
+
+        basketModule.addItem({
+            item: "bread",
+            price: 0.5
+        });
+
+        basketModule.addItem({
+            item: "butter",
+            price: 0.3
+        });
+
+        console.log(basketModule.getItemCount());
+
+        console.log(basketModule.getTotal());
+
+        // However, the following will not work:
+        console.log(basketModule.basket);
+
+        // This will not work either and give error:
+        console.log(basket);
+    </script>
+</body>
+</html>

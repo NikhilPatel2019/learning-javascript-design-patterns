@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module Pattern Example 2</title>
+    <script type="module" src="privateMethodExample1.js"></script>
+</head>
+<body>
+    <h1>Module Pattern Example 2</h1>
+    <p>Open the console to see the output.</p>
+
+    <script type="module">
+        import myNamespace from "./testModule.js";
+
+        myNamespace.myPublicFunction("bar");
+    </script>
+</body>
+</html>
