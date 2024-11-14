@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Singleton Pattern - Example 1</title>
+</head>
+<body>
+    <h1>Singleton Pattern - Example 1</h1>
+    <p>Open the console to see the output.</p>
+
+    <script type="module">
+        import MySingleton from './MySingleton.js';
+        import MyBadSingleton from './MyBadSingleton.js';
+
+        const singleA = new MySingleton();
+        const singleB = new MySingleton();
+        console.log(singleA.getRandomNumber() === singleB.getRandomNumber())
+
+        const badSingleA = new MyBadSingleton();
+        const badSingleB = new MyBadSingleton();
+        console.log(badSingleA.getRandomNumber() !== badSingleB.getRandomNumber())
+
+
+    </script>
+</body>
+</html>
