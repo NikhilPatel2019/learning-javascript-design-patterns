@@ -20,6 +20,4 @@ class Vehicle extends VehicalPrototype {
     }
 }
 
-const car = new Vehicle('Ford Escort');
-const car2 = car.clone();
-car2.getModel()
+export default Vehicle;
