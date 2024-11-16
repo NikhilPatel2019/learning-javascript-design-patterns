@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6.2 Approaces to building trucks</title>
+</head>
+<body>
+    <h1>6.2 Approaces to building trucks</h1>
+    <p>Open the console to see the output.</p>
+    
+    <script type="module">
+        import VehicleFactory from "../6.1-Factory/Vehiclefactory.js"
+        import { Car, Truck } from "../6.1-Factory/Vehicles.js";
+
+        const carFactory = new VehicleFactory();
+        const car = carFactory.createVehicle({
+            vehicleType: 'car',
+            color: 'yellow',
+            doors: 6,
+        })
+
+        console.log(car instanceof Car);
+        console.log(car);
+
+        console.log("Approach 1 Output:");
+        const movingTruck =  carFactory.createVehicle({
+            vehicleType: 'truck',
+            state: 'like new',
+            color: 'red',
+            wheelSize: 'small',
+        })
+
+        console.log(movingTruck instanceof Truck);
+        console.log(movingTruck);
+
+        console.log("Approach 2 Output:");
+        class TruckFactory extends VehicleFactory{
+            constructor(){
+                super();
+                this.vehicleClass = Truck;
+            }
+        }
+
+        const truckFactory = new TruckFactory();
+        const myBigTruck = truckFactory.createVehicle({
+            state: 'omg...so bad.',
+            color: 'pink',
+            wheelSize: 'so big',
+        })
+
+        console.log(myBigTruck instanceof Truck);
+        console.log(myBigTruck);
+    </script>
+</body>
+</html>

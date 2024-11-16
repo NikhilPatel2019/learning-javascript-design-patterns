@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6.1 Factory</title>
+</head>
+<body>
+    <h1>6.1 Factory</h1>
+    <p>Open the console to see the output.</p>
+
+
+    <script type="module">
+        import VehicleFactory from './VehicleFactory.js';
+        import { Car } from './Vehicles.js';
+
+        const carFactory = new VehicleFactory();
+        const car = carFactory.createVehicle({
+            vehicleType: 'car',
+            color: 'yellow',
+            doors: 6,
+        })
+
+        console.log(car instanceof Car);
+        console.log(car);
+    </script>
+</body>
+</html>

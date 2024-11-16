@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6.3 Abstract Factory Class</title>
+</head>
+<body>
+    <h1>6.3 Abstract Factory Class</h1>
+    <p>Open the console to see the output.</p>
+    
+    <script type="module">
+        import AbstractVehicleFactory from "./AbstractVehiclefactory.js"
+        import { Car, Truck } from "./Vehicles.js";
+
+        const abstractVehicleFactory = new AbstractVehicleFactory();
+        abstractVehicleFactory.registerVehicle('car', Car);
+        abstractVehicleFactory.registerVehicle('truck', Truck);
+
+        // Instantiate a new car based on the abstract vehicle type
+        const car = abstractVehicleFactory.getVehicle('car', {
+            color: 'lime green',
+            state: 'like new',
+        })
+        console.log(car);
+
+        const truck = abstractVehicleFactory.getVehicle('truck', {
+            wheelSize: 'medium',
+            color: 'neon yellow',
+        })
+        console.log(truck);
+    </script>
+</body>
+</html>
