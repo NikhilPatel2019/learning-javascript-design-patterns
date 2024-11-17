@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2.3 Constructor Augmentation</title>
+</head>
+<body>
+    <h1>2.3 Constructor Augmentation</h1>
+    <p>Open the console to see the output.</p>
+
+    <script type="module">
+        import Car from './Car.js';
+        import Mixin from './Mixin.js';
+
+        class MyCar extends Mixin(Car) {}
+
+        const myCar = new MyCar({});
+        
+        myCar.driveForward();
+        myCar.driveBackward();
+
+        const mySportsCar = new MyCar({
+            model: 'Porsche',
+            color: 'red',
+        });
+
+        mySportsCar.driveSideways();
+    </script>
+</body>
+</html>
