@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interface</title>
+</head>
+<body>
+    <h1>Interface</h1>
+    <p>Open the console to see the output.</p>
+    
+    <script type="module">
+        import Todo from './Todo.js';
+
+        const properties = {
+            name: 'Remember to buy the milk',
+            date: '05/06/2040',
+            actions: {
+                summary() {
+                    return 'Remainder to buy the milk, we are almost out!';
+                },
+                placeOrder() {
+                    return 'Ordering milk from your local grocery store';
+                }
+            }
+        }
+
+        const todoItem = new Todo(properties);
+        
+        console.log(todoItem);
+
+        console.log(todoItem.methods.summary());
+        console.log(todoItem.methods.placeOrder())
+    </script>
+</body>
+</html>
