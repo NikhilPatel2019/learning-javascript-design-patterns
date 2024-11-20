@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3.3 Abstract Decorator</title>
+</head>
+<body>
+    <h1>3.3 Abstract Decorator</h1>
+    <p>Open the console to see the output.</p>
+
+    <script type="module">
+        import CaseDecorator from './CaseDecorator.js';
+        import { MacBookPro } from "./Macbook.js";
+        
+        const myMacBookPro = new MacBookPro();
+
+        console.log(myMacBookPro);
+        console.log(myMacBookPro.getPrice());
+
+        const decoratedMacBookPro = new CaseDecorator(myMacBookPro);
+        console.log(decoratedMacBookPro);
+        console.log(decoratedMacBookPro.getPrice());
+    </script>
+</body>
+</html>
