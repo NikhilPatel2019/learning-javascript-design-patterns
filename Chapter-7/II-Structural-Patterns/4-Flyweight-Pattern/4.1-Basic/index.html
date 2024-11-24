@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4.1 Flyweight</title>
+</head>
+<body>
+    <h1>4.1 Flyweight</h1>
+    <p>Open the console to see the output.</p>
+
+    <script type="module">
+        import CoffeeFlavorFactory from './CoffeeFlavorFactory.js';
+
+        const CoffeeOrderContext = (tableNumber) => ({
+            getTable() {
+                return tableNumber;
+            }
+        })
+
+        const testFlyweight = () => {
+            const flavors = [];
+            const tables = [];
+            let ordersMade = 0;
+
+            const flavorFactory = new CoffeeFlavorFactory();
+
+            function takeOrders(flavorIn, table){
+                flavors.push(flavorFactory.getCoffeeFlavor(flavorIn));
+                tables.push(CoffeeOrderContext(table));
+                ordersMade++;
+            }
+
+            // Place Orders
+            takeOrders('Cappuccino', 2);
+
+            console.log(flavors);
+            console.log(tables);
+            
+            // Serve Orders
+            for(let i=0; i < ordersMade; ++i){
+                flavors[i].serveCoffee(tables[i]);
+            }
+
+            console.log(`total CoffeeFlavor objects made: ${flavorFactory.getTotalCoffeeFlavorsMade()}`);
+        }
+
+        testFlyweight();
+    </script>
+</body>
+</html>
